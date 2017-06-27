@@ -72,8 +72,8 @@ echo $day/(60*60*24);
 	   ?>
 </ul>       
        <br/>
-       <button name="reply" id="b<?php echo $values['Msg_id']; ?>" type="button">Reply</button>
-       <div id="d<?php echo $values['Msg_id']; ?>" data-id="" style="display:none">
+       <button name="reply" id="b<?php echo $values['Msg_id']; ?>" class="replyBtn" type="button">Reply</button>
+       <div id="d<?php echo $values['Msg_id']; ?>" class="replyContainer" data-id="" style="display:none">
          <form name="reply" action="" method="post">
            <input type="text" name="User_Name" placeholder="User Name" size="40" required>
            <br/>
@@ -88,13 +88,13 @@ echo $day/(60*60*24);
 	   
 ?>
 <script>	   
-$(document).ready(function() {
+/*$(document).ready(function() {
    $("button#b<?php echo $values['Msg_id']; ?>").click(function (){
 	   $('div#d<?php echo $values['Msg_id']; ?>').fadeToggle();
 	   }); 
   $('p.successfully_sent_reply').fadeOut(2000);
   
-});
+});*/
 </script>   
 <?php	    
 	}
@@ -147,3 +147,10 @@ if($insert_msg==true)
 ?>
 </body>
 </html>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".replyBtn").click(function () {
+			$(this).next(".replyContainer").toggle();
+		});
+	});
+</script>
